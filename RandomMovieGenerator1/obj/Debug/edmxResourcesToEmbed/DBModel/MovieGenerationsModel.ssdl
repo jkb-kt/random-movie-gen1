@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Movie_GenerationsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="movie_generations">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="movieID" Type="int" />
+    <Property Name="title" Type="char" MaxLength="255" />
+    <Property Name="release" Type="int" />
+    <Property Name="image" Type="char" MaxLength="255" />
+  </EntityType>
+  <EntityContainer Name="Movie_GenerationsModelStoreContainer">
+    <EntitySet Name="movie_generations" EntityType="Self.movie_generations" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

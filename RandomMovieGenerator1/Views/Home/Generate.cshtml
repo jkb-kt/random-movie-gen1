@@ -1,0 +1,37 @@
+﻿
+@{
+	ViewBag.Title = "Index";
+}
+
+@{
+	var currentMovieID = ViewBag.currentMovieID;
+	var currentMovieName = ViewBag.currentMovieName;
+	var currentMovieOverview = ViewBag.currentMovieOverview;
+	var currentMovieRelease = ViewBag.currentMovieRelease;
+	var currentMovieGenres = ViewBag.currentMovieGenres;
+	var currentMovieCast = ViewBag.currentMovieCast;
+	var currentMovieDirectors = ViewBag.currentMovieDirectors;
+	var currentMovieImage = ViewBag.currentMovieImage;
+}
+
+<h2>Welcome To the Random Movie Generator</h2>
+
+@using (Html.BeginForm("Generate", "Home", FormMethod.Get))
+{
+	<div class="form-group">
+		<input id="Button" type="submit" value="Generate Movie" />
+	</div>
+}
+
+<div>
+	<h3>ID: @currentMovieID</h3>
+	<h3>@currentMovieName (@currentMovieRelease)</h3>
+	<h4>@foreach (var item in currentMovieGenres)
+	{<span>@item</span>}</h4>
+	<h4>Director: @foreach (var item in currentMovieDirectors)
+	{<span>@item</span>}</h4>
+	<h4>Cast: @foreach (var item in currentMovieCast)
+	{<span>@item</span>}</h4>
+	<p>@currentMovieOverview</p>
+	<img src="@currentMovieImage" />
+</div>
