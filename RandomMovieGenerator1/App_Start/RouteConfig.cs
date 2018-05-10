@@ -23,6 +23,11 @@ namespace RandomMovieGenerator1
                 name: "Generate",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Generate", id = UrlParameter.Optional });
+
+            routes.MapRoute(
+                name: "GeneratedMovies",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "GeneratedMovies", id = UrlParameter.Optional });
         }
     }
 }

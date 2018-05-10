@@ -4,6 +4,7 @@
     <EntitySetMapping Name="movie_generations">
       <EntityTypeMapping TypeName="Movie_GenerationsModel.movie_generations">
         <MappingFragment StoreEntitySet="movie_generations">
+          <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="movieID" ColumnName="movieID" />
           <ScalarProperty Name="title" ColumnName="title" />

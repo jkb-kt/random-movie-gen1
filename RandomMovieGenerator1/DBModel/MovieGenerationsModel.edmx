@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Movie_GenerationsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Movie_GenerationsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="movie_generations">
           <Key>
             <PropertyRef Name="id" />
@@ -14,12 +14,12 @@
           <Property Name="title" Type="char" MaxLength="255" />
           <Property Name="release" Type="int" />
           <Property Name="image" Type="char" MaxLength="255" />
+          <Property Name="Date" Type="datetime" />
         </EntityType>
         <EntityContainer Name="Movie_GenerationsModelStoreContainer">
           <EntitySet Name="movie_generations" EntityType="Self.movie_generations" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Movie_GenerationsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -32,6 +32,7 @@
           <Property Name="title" Type="String" MaxLength="255" FixedLength="true" Unicode="false" />
           <Property Name="release" Type="Int32" />
           <Property Name="image" Type="String" MaxLength="255" FixedLength="true" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityContainer Name="Movie_GenerationsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="movie_generations" EntityType="Self.movie_generations" />
@@ -45,6 +46,7 @@
           <EntitySetMapping Name="movie_generations">
             <EntityTypeMapping TypeName="Movie_GenerationsModel.movie_generations">
               <MappingFragment StoreEntitySet="movie_generations">
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="movieID" ColumnName="movieID" />
                 <ScalarProperty Name="title" ColumnName="title" />

@@ -1,4 +1,5 @@
-﻿
+﻿@using System.Linq
+
 @{
 	ViewBag.Title = "Index";
 }
@@ -12,6 +13,9 @@
 	var currentMovieCast = ViewBag.currentMovieCast;
 	var currentMovieDirectors = ViewBag.currentMovieDirectors;
 	var currentMovieImage = ViewBag.currentMovieImage;
+	int lastCurrentMovieCastIndex = currentMovieCast.Count - 1;
+	int lastCurrentMovieDirectorsIndex = currentMovieDirectors.Count - 1;
+
 }
 
 <h2>Welcome To the Random Movie Generator</h2>
@@ -23,15 +27,46 @@
 	</div>
 }
 
+@using (Html.BeginForm("GeneratedMovies", "Home", FormMethod.Get))
+{
+	<div class="form-group">
+		<input id="database" type="submit" value="Previous generations" />
+	</div>
+}
+
 <div>
 	<h3>ID: @currentMovieID</h3>
-	<h3>@currentMovieName (@currentMovieRelease)</h3>
-	<h4>@foreach (var item in currentMovieGenres)
-	{<span>@item</span>}</h4>
-	<h4>Director: @foreach (var item in currentMovieDirectors)
-	{<span>@item</span>}</h4>
-	<h4>Cast: @foreach (var item in currentMovieCast)
-	{<span>@item</span>}</h4>
+	<h3>@currentMovieName @if (currentMovieRelease != null) {<span>(@currentMovieRelease)</span> }</h3>
+	<h4>
+	@foreach (var item in currentMovieGenres)
+	{<span>@item &nbsp &nbsp &nbsp</span>} 
+
+	</h4>
+	<h4>
+		Director: @if (currentMovieDirectors[0] != null)
+		{
+			foreach (var item in currentMovieDirectors)
+			{if (item.Equals(currentMovieDirectors[lastCurrentMovieDirectorsIndex]))
+				{
+		<span>@item</span>}
+				else {<span>@item,&nbsp</span> }
+			}
+		}
+	</h4>
+	<h4>
+		
+		Cast: @if (currentMovieCast[0] != "No cast was specified")
+		{
+			foreach (var item in currentMovieCast)
+			{if (item.Equals(currentMovieCast[lastCurrentMovieCastIndex]))
+				{
+				<span>@item</span>}
+				else { <span>@item,&nbsp</span>}
+				}
+		}
+	</h4>
 	<p>@currentMovieOverview</p>
 	<img src="@currentMovieImage" />
 </div>
+
+

@@ -15,9 +15,10 @@ namespace RandomMovieGenerator1.DBModel
     public partial class movie_generations
     {
         public int id { get; set; }
-        public Nullable<int> movieID { get; set; }
+        public int movieID { get; set; }
         public string title { get; set; }
         public Nullable<int> release { get; set; }
         public string image { get; set; }
+        public System.DateTime Date { get; set; }
     }
 }

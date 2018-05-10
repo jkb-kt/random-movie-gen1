@@ -9,6 +9,7 @@
     <Property Name="title" Type="String" MaxLength="255" FixedLength="true" Unicode="false" />
     <Property Name="release" Type="Int32" />
     <Property Name="image" Type="String" MaxLength="255" FixedLength="true" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityContainer Name="Movie_GenerationsEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="movie_generations" EntityType="Self.movie_generations" />

@@ -1,0 +1,47 @@
+﻿@using RandomMovieGenerator1.DBObjects;
+
+@{
+	ViewBag.Title = "GeneratedMovies";
+}
+
+<h2>GeneratedMovies</h2>
+
+@using (Html.BeginForm("Generate", "Home", FormMethod.Get))
+{
+	<div class="form-group">
+		<input id="Button" type="submit" value="Generate Movie" />
+	</div>
+}
+
+@using (Html.BeginForm("GeneratedMovies", "Home", FormMethod.Get))
+{
+	<div class="form-group">
+		<input id="database" type="submit" value="Previous generations" />
+	</div>
+
+}
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Movie ID</th>
+			<th>Generated On</th>
+			<th>Title</th>
+			<th>Release</th>
+			<th>Image</th>
+		</tr>
+	</thead>
+	<tbody>
+		<!-- Loop to fill every row in the table based on the data -->
+		@foreach (CurrentMovie generatedMovie in ViewBag.generatedMovies)
+		{
+		<tr>
+			<td>@generatedMovie.movieID</td>
+			<td>@generatedMovie.date</td>
+			<td>@generatedMovie.title</td>
+			<td>@generatedMovie.release</td>
+			<td>@generatedMovie.image</td>
+		</tr>
+		}
+	</tbody>
+</table>  

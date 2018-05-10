@@ -9,6 +9,7 @@
     <Property Name="title" Type="char" MaxLength="255" />
     <Property Name="release" Type="int" />
     <Property Name="image" Type="char" MaxLength="255" />
+    <Property Name="Date" Type="datetime" />
   </EntityType>
   <EntityContainer Name="Movie_GenerationsModelStoreContainer">
     <EntitySet Name="movie_generations" EntityType="Self.movie_generations" Schema="dbo" store:Type="Tables" />
