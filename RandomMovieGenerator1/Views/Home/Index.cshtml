@@ -1,30 +1,13 @@
 ﻿@{
-	ViewBag.Title = "Index";
+	ViewBag.Title = "Random Movie Generator";
 }
 
 @{
 	var latestMovieID = ViewBag.latestMovieID;
 }
 
-<h2>Welcome To the Random Movie Generator</h2>
-
-@using (Html.BeginForm("Generate", "Home", FormMethod.Get))
-{
-	<div class="form-group">
-		<input id="Button" type="submit" value="Generate Movie" />
-	</div>
-}
-
-@using (Html.BeginForm("GeneratedMovies", "Home", FormMethod.Get))
-{
-	<div class="form-group">
-		<input id="database" type="submit" value="Previous generations" />
-	</div>
-
-}
-
 <div>
-	<h3>ID: @latestMovieID </h3>
+	<h3>Application currently has @latestMovieID movies to generate from! </h3>
 </div>
 
 

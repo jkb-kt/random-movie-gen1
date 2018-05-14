@@ -1,8 +1,5 @@
 ﻿@using System.Linq
 
-@{
-	ViewBag.Title = "Index";
-}
 
 @{
 	var currentMovieID = ViewBag.currentMovieID;
@@ -17,56 +14,56 @@
 	int lastCurrentMovieDirectorsIndex = currentMovieDirectors.Count - 1;
 
 }
+<div class="movie">
+	<div class="info">
+		<div>
+			<!--	<h3>ID: @currentMovieID</h3> -->
+			<h2>
+				@currentMovieName @if (currentMovieRelease != null)
+		{<span>(@currentMovieRelease)</span>}
+			</h2>
+			<h3>
+				@foreach (var item in currentMovieGenres)
+		{<span>@item &nbsp &nbsp &nbsp</span>}
 
-<h2>Welcome To the Random Movie Generator</h2>
+			</h3>
 
-@using (Html.BeginForm("Generate", "Home", FormMethod.Get))
-{
-	<div class="form-group">
-		<input id="Button" type="submit" value="Generate Movie" />
-	</div>
-}
+			
+			
+			<p>
+				<span class="bold">Director:</span>
 
-@using (Html.BeginForm("GeneratedMovies", "Home", FormMethod.Get))
-{
-	<div class="form-group">
-		<input id="database" type="submit" value="Previous generations" />
-	</div>
-}
-
-<div>
-	<h3>ID: @currentMovieID</h3>
-	<h3>@currentMovieName @if (currentMovieRelease != null) {<span>(@currentMovieRelease)</span> }</h3>
-	<h4>
-	@foreach (var item in currentMovieGenres)
-	{<span>@item &nbsp &nbsp &nbsp</span>} 
-
-	</h4>
-	<h4>
-		Director: @if (currentMovieDirectors[0] != null)
+				@if (currentMovieDirectors[0] != null)
 		{
 			foreach (var item in currentMovieDirectors)
-			{if (item.Equals(currentMovieDirectors[lastCurrentMovieDirectorsIndex]))
+			{
+				if (item.Equals(currentMovieDirectors[lastCurrentMovieDirectorsIndex]))
 				{
-		<span>@item</span>}
-				else {<span>@item,&nbsp</span> }
-			}
-		}
-	</h4>
-	<h4>
-		
-		Cast: @if (currentMovieCast[0] != "No cast was specified")
+					<span class="normaltext">@item</span>}
+		else
+		{<span>@item,&nbsp</span>}
+}
+}
+			</p>
+			<p>
+
+				<span class="bold">	Cast: </span> @if (currentMovieCast[0] != "No cast was specified")
 		{
 			foreach (var item in currentMovieCast)
-			{if (item.Equals(currentMovieCast[lastCurrentMovieCastIndex]))
+			{
+				if (item.Equals(currentMovieCast[lastCurrentMovieCastIndex]))
 				{
-				<span>@item</span>}
-				else { <span>@item,&nbsp</span>}
-				}
-		}
-	</h4>
-	<p>@currentMovieOverview</p>
-	<img src="@currentMovieImage" />
+					<span>@item</span>}
+		else
+		{ <span>@item,&nbsp</span>}
+}
+}
+			</p>
+			<p>@currentMovieOverview</p>
+		</div>
+	</div>
+	<div class="poster">
+		<img src="@currentMovieImage" />
+	</div>
 </div>
-
 

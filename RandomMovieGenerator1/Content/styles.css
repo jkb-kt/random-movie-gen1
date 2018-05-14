@@ -1,0 +1,127 @@
+﻿html {
+height:100%;
+}
+
+body {
+width: 80%;
+margin: auto;
+height: 100%;
+color: white;
+font-family: 'Palatino Linotype';
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Palatino Linotype';
+	line-height: 150%;
+	font-weight: bold;
+}
+
+p {
+text-align: justify;
+padding-top:1.1em;
+}
+
+.bold {
+	font-weight: bold;
+	font-size:1.2em;
+}
+
+h1 {
+font-size: 48px;
+}
+
+
+footer {
+width: 80%;
+text-align:center;
+margin:auto;
+bottom: 0;
+}
+
+hr {
+margin: 20px;
+}
+
+.box {
+background-color: RGB(35, 35, 35);
+min-height:100%;
+margin-bottom: -71px;
+}
+
+.container {
+text-align:center;
+padding: 10px 0;
+}
+
+.header img {
+width:100%;
+margin:auto;
+}
+
+.header {
+position: relative;
+text-align: center;
+color: white;
+}
+
+.buttons {
+position: absolute;
+top: 75%;
+width:100%;
+}
+
+.form-group {
+float: left;
+margin: 0;
+width: 50%;
+}
+
+
+input {
+width: 180px;
+}
+
+.normaltext {
+	display: inline-block;
+}
+
+
+
+h1 {
+position: absolute;
+top: 30%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+.info {
+	text-align:left;
+	float:left;
+	width:50%;
+	padding-left: 10px;
+}
+
+th {
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+

@@ -1,40 +1,49 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.Optimization;
+
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
-            </div>
-        </div>
-    </div>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+	<div class="box">
+		<header class="header">
+			<img alt="header" src="~/Content/wallhaven-165185.png" />
+			<h1>Random Movie Generator</h1>
+			<div class="buttons">
+					@using (Html.BeginForm("Generate", "Home", FormMethod.Get))
+	{
+				<div class="form-group">
+					<input class="w3-button w3-border w3-hover-white" id="generate" type="submit" value="Generate a Movie" />
+				</div>
+}
+				
+					@using (Html.BeginForm("GeneratedMovies", "Home", FormMethod.Get))
+	{
+				<div class="form-group">
+					<input class="w3-button w3-border w3-hover-white" id="database" type="submit" value="Generated before" />
+				</div>
+}
+			</div>
+		</header>
+		<div class="container">
+			@RenderBody()
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+
+		</div>
+
+
+		@Scripts.Render("~/bundles/bootstrap")
+	</div>
+	<!--	<footer>
+			<hr />
+			<p>&copy; @DateTime.Now.Year - Jakub Kot</p>
+		</footer>
+		-->
 </body>
 </html>

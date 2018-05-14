@@ -76,3 +76,8 @@ c:\users\mrbuk\source\repos\RandomMovieGenerator1\RandomMovieGenerator1\obj\Debu
 c:\users\mrbuk\source\repos\RandomMovieGenerator1\RandomMovieGenerator1\obj\Debug\RandomMovieGenerator1.csproj.CopyComplete
 c:\users\mrbuk\source\repos\RandomMovieGenerator1\RandomMovieGenerator1\obj\Debug\RandomMovieGenerator1.dll
 c:\users\mrbuk\source\repos\RandomMovieGenerator1\RandomMovieGenerator1\obj\Debug\RandomMovieGenerator1.pdb
+C:\Users\mrbuk\source\repos\RandomMovieGenerator1\RandomMovieGenerator1\bin\Antlr3.Runtime.dll
+C:\Users\mrbuk\source\repos\RandomMovieGenerator1\RandomMovieGenerator1\bin\System.Web.Optimization.dll
+C:\Users\mrbuk\source\repos\RandomMovieGenerator1\RandomMovieGenerator1\bin\WebGrease.dll
+C:\Users\mrbuk\source\repos\RandomMovieGenerator1\RandomMovieGenerator1\bin\Antlr3.Runtime.pdb
+C:\Users\mrbuk\source\repos\RandomMovieGenerator1\RandomMovieGenerator1\bin\System.Web.Optimization.xml

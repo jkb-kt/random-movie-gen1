@@ -1,25 +1,6 @@
 ﻿@using RandomMovieGenerator1.DBObjects;
 
-@{
-	ViewBag.Title = "GeneratedMovies";
-}
-
-<h2>GeneratedMovies</h2>
-
-@using (Html.BeginForm("Generate", "Home", FormMethod.Get))
-{
-	<div class="form-group">
-		<input id="Button" type="submit" value="Generate Movie" />
-	</div>
-}
-
-@using (Html.BeginForm("GeneratedMovies", "Home", FormMethod.Get))
-{
-	<div class="form-group">
-		<input id="database" type="submit" value="Previous generations" />
-	</div>
-
-}
+<h2>Generated Before</h2>
 
 <table class="table">
 	<thead>
@@ -40,7 +21,7 @@
 			<td>@generatedMovie.date</td>
 			<td>@generatedMovie.title</td>
 			<td>@generatedMovie.release</td>
-			<td>@generatedMovie.image</td>
+			<td><a target="_blank" href="@generatedMovie.image">IMAGE</a></td>
 		</tr>
 		}
 	</tbody>

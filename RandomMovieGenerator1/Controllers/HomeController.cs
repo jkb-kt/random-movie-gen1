@@ -85,7 +85,7 @@ namespace RandomMovieGenerator1.Controllers
 
 
 
-            if (jsonObject["id"] == null)
+            if (jsonObject["id"] == null || jsonObjectImages["posters"].ToArray().Length == 0)
             {
                 Generate();
             }
@@ -158,15 +158,15 @@ namespace RandomMovieGenerator1.Controllers
                     directors.Add(null);
                 }
 
-                if (jsonObjectImages["posters"].ToArray().Length != 0)
-                {
+              //  if (jsonObjectImages["posters"].ToArray().Length != 0)
+               // {
                     image = "https://image.tmdb.org/t/p/w300" + jsonObjectImages["posters"][0]["file_path"].ToString();
                    
-                }
-                else
-                {
-                    image = null;
-                }
+               // }
+               // else
+               // {
+                //    image = null;
+               // }
 
 
                 ViewBag.currentMovieID = id;
