@@ -19,6 +19,6 @@ namespace RandomMovieGenerator1.DBModel
         public string title { get; set; }
         public Nullable<int> release { get; set; }
         public string image { get; set; }
-        public System.DateTime Date { get; set; }
+        public DateTime Date { get; set; }
     }
 }

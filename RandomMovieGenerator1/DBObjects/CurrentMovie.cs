@@ -20,14 +20,16 @@ namespace RandomMovieGenerator1.DBObjects
            public DateTime date { get; set; }
 
 
-
+        // Method for saving generated movie to database
         public void SaveRecord(int ID, string title, int? release, string image)
         {
             
             
             var context = new Movie_GenerationsEntities();
             var movie_record = new movie_generations
+
             {
+
                 movieID = ID,
                 title = title,
                 release = release,
@@ -47,7 +49,6 @@ namespace RandomMovieGenerator1.DBObjects
             using (Movie_GenerationsEntities context =
                 new Movie_GenerationsEntities())
             {
-
                 return await context.movie_generations                       
                         .Select(x => new CurrentMovie()
                         {

@@ -30,10 +30,10 @@
 
 			
 			
-			<p>
-				<span class="bold">Director:</span>
-
-				@if (currentMovieDirectors[0] != null)
+		<p>
+		<span class="bold">Director:</span>
+		<!-- Logic for putting comma after each director if there are more except the last one -->
+		@if (currentMovieDirectors[0] != null)
 		{
 			foreach (var item in currentMovieDirectors)
 			{
@@ -47,19 +47,21 @@
 			</p>
 			<p>
 
-				<span class="bold">	Cast: </span> @if (currentMovieCast[0] != "No cast was specified")
+		<span class="bold">	Cast: </span>
+		<!-- Logic for putting comma after each cast if there are more except the last one -->
+		@if (currentMovieCast[0] != "No cast was specified")
 		{
-			foreach (var item in currentMovieCast)
+		foreach (var item in currentMovieCast)
+		{
+			if (item.Equals(currentMovieCast[lastCurrentMovieCastIndex]))
 			{
-				if (item.Equals(currentMovieCast[lastCurrentMovieCastIndex]))
-				{
-					<span>@item</span>}
+				<span>@item</span>}
 		else
 		{ <span>@item,&nbsp</span>}
-}
-}
-			</p>
-			<p>@currentMovieOverview</p>
+		}
+		}
+		</p>
+		<p>@currentMovieOverview</p>
 		</div>
 	</div>
 	<div class="poster">

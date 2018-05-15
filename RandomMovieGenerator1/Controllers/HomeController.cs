@@ -16,6 +16,7 @@ namespace RandomMovieGenerator1.Controllers
         // GET: Index
         public ActionResult Index()
         {
+            // Request for currently latest movie ID
 
             var client = new RestClient("https://api.themoviedb.org/3/movie/");
             var request = new RestRequest("latest?api_key={api_key}", Method.GET);
@@ -36,7 +37,7 @@ namespace RandomMovieGenerator1.Controllers
         }
 
         // GET: GeneratedMovies
-        
+        // Calling previously generated movies from database hosted on Azure
         public async Task<ActionResult> GeneratedMovies()
         {
             
@@ -54,28 +55,36 @@ namespace RandomMovieGenerator1.Controllers
         {
             var movieDB = new CurrentMovie();
 
+            // Generating random number (ID) from 1 to the latestID
             Random number = new Random();
             var latestID = Int32.Parse(Session["latestID"].ToString());
             var randomMovieID = number.Next(latestID);
 
+
             var client = new RestClient("https://api.themoviedb.org/3/movie/");
 
+            // Request for basic information about the movie
             var request = new RestRequest("{randomMovieID}?api_key={api_key}", Method.GET);
             request.AddParameter("api_key", "d98e9039758268db18c0fa245a1cc4db", ParameterType.UrlSegment);
             request.AddParameter("randomMovieID", randomMovieID, ParameterType.UrlSegment);
             //  request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
             var response = client.Execute(request);
+
+            // Request for information about credits for the selected movie
             var requestCredits = new RestRequest("{randomMovieID}/credits?api_key={api_key}", Method.GET);
             requestCredits.AddParameter("api_key", "d98e9039758268db18c0fa245a1cc4db", ParameterType.UrlSegment);
             requestCredits.AddParameter("randomMovieID", randomMovieID, ParameterType.UrlSegment);
             //  request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
             var responseCredits = client.Execute(requestCredits);
+
+            // Request for image for the selected movie
             var requestImages = new RestRequest("{randomMovieID}/images?api_key={api_key}", Method.GET);
             requestImages.AddParameter("api_key", "d98e9039758268db18c0fa245a1cc4db", ParameterType.UrlSegment);
             requestImages.AddParameter("randomMovieID", randomMovieID, ParameterType.UrlSegment);
             //  request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
             var responseImages = client.Execute(requestImages);
 
+            // Parsing into JSON
             var json = response.Content;
             var jsonObject = JObject.Parse(json);
             var jsonCredits = responseCredits.Content;
@@ -84,12 +93,13 @@ namespace RandomMovieGenerator1.Controllers
             var jsonObjectImages = JObject.Parse(jsonImages);
 
 
-
+            // Basic check - ID must represent a movie and must have image
             if (jsonObject["id"] == null || jsonObjectImages["posters"].ToArray().Length == 0)
             {
                 Generate();
             }
 
+            // This section gathers needed information from JSON
             else
             {
                 var id = Int32.Parse(jsonObject["id"].ToString());
@@ -157,18 +167,10 @@ namespace RandomMovieGenerator1.Controllers
                 {
                     directors.Add(null);
                 }
+           
+                image = "https://image.tmdb.org/t/p/w300" + jsonObjectImages["posters"][0]["file_path"].ToString();                             
 
-              //  if (jsonObjectImages["posters"].ToArray().Length != 0)
-               // {
-                    image = "https://image.tmdb.org/t/p/w300" + jsonObjectImages["posters"][0]["file_path"].ToString();
-                   
-               // }
-               // else
-               // {
-                //    image = null;
-               // }
-
-
+                // Saving data to ViewBag to use them in cshtml files
                 ViewBag.currentMovieID = id;
                 ViewBag.currentMovieName = title;
                 ViewBag.currentMovieOverview = overview;
@@ -178,6 +180,7 @@ namespace RandomMovieGenerator1.Controllers
                 ViewBag.currentMovieDirectors = directors;
                 ViewBag.currentMovieImage = image;
 
+                // Saving currently generated movie into database
                 movieDB.SaveRecord(id, title, release, image);
 
             }

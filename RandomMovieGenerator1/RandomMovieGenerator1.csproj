@@ -161,6 +161,7 @@
       <DependentUpon>MovieGenerationsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DBObjects\CurrentMovie.cs" />
+    <Compile Include="DBObjects\MyConfiguration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
